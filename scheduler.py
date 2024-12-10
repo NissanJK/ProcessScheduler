@@ -1,10 +1,17 @@
-from utils import print_results, plot_gantt_chart
+from utils import print_results
 
 class Scheduler:
     def __init__(self, processes):
         self.processes = processes
 
+    def calculate_metrics(self, waiting_time, turnaround_time):
+        """Calculate average waiting and turnaround times."""
+        avg_waiting_time = sum(waiting_time) / len(waiting_time)
+        avg_turnaround_time = sum(turnaround_time) / len(turnaround_time)
+        return avg_waiting_time, avg_turnaround_time
+
     def fcfs(self):
+        """First Come First Serve (FCFS) Scheduling"""
         self.processes.sort(key=lambda x: x[1])  # Sort by arrival time
         current_time = 0
         waiting_time = []
@@ -19,10 +26,10 @@ class Scheduler:
             current_time += burst
             turnaround_time.append(current_time - arrival)
 
-        print_results(self.processes, waiting_time, turnaround_time)
-        plot_gantt_chart(gantt_chart, "FCFS")
+        return waiting_time, turnaround_time, gantt_chart
 
     def sjf(self):
+        """Shortest Job First (SJF) Scheduling"""
         self.processes.sort(key=lambda x: (x[1], x[2]))  # Sort by arrival time, then burst time
         current_time = 0
         waiting_time = []
@@ -44,10 +51,10 @@ class Scheduler:
             else:
                 current_time += 1
 
-        print_results(self.processes, waiting_time, turnaround_time)
-        plot_gantt_chart(gantt_chart, "SJF")
+        return waiting_time, turnaround_time, gantt_chart
 
     def round_robin(self, quantum):
+        """Round Robin (RR) Scheduling"""
         current_time = 0
         queue = self.processes[:]
         waiting_time = [0] * len(self.processes)
@@ -69,10 +76,10 @@ class Scheduler:
                 turnaround_time[pid - 1] = current_time - arrival
                 waiting_time[pid - 1] = turnaround_time[pid - 1] - burst
 
-        print_results(self.processes, waiting_time, turnaround_time)
-        plot_gantt_chart(gantt_chart, "Round Robin")
+        return waiting_time, turnaround_time, gantt_chart
 
     def priority_scheduling(self):
+        """Priority Scheduling"""
         self.processes.sort(key=lambda x: (x[1], x[3]))  # Sort by arrival time, then priority
         current_time = 0
         waiting_time = []
@@ -87,5 +94,4 @@ class Scheduler:
             current_time += burst
             turnaround_time.append(current_time - arrival)
 
-        print_results(self.processes, waiting_time, turnaround_time)
-        plot_gantt_chart(gantt_chart, "Priority Scheduling")
+        return waiting_time, turnaround_time, gantt_chart

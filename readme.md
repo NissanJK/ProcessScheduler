@@ -1,72 +1,93 @@
-### **Process Scheduler Simulator**
+# Process Scheduler Simulator
 
-#### **Description**
-The **Process Scheduler Simulator** is a Python-based project that simulates common CPU scheduling algorithms, including:  
-- **First Come First Serve (FCFS)**  
-- **Shortest Job First (SJF)**  
-- **Round Robin (RR)**  
-- **Priority Scheduling**
+## Overview
+The **Process Scheduler Simulator** is a Python-based application designed to simulate and analyze CPU scheduling algorithms. It features a graphical user interface (GUI) for users to input process details, select scheduling algorithms, and visualize the results with Gantt charts. The simulator calculates key performance metrics such as average waiting time and turnaround time.
 
-This project is designed for educational purposes to demonstrate how operating systems manage CPU scheduling among processes. It calculates **waiting times**, **turnaround times**, and visualizes process execution using Gantt charts.
+## Features
+- Supports multiple scheduling algorithms:
+  - First Come First Serve (FCFS)
+  - Shortest Job First (SJF)
+  - Round Robin (RR)
+  - Priority Scheduling
+- Interactive GUI built with `Tkinter`.
+- Displays Gantt charts for visualizing process execution.
+- Calculates average waiting time and turnaround time.
+- Handles user inputs dynamically.
 
----
+## Requirements
+- Python 3.7 or higher
+- Required Libraries:
+  - `matplotlib`
+  - `tkinter`
 
-### **Features**
-- Supports four CPU scheduling algorithms.  
-- Interactive user input for processes.  
-- Calculates average waiting time and average turnaround time.  
-- Displays Gantt charts for better understanding.  
+To install the dependencies, run:
+```bash
+pip install matplotlib
+```
 
----
-
-### **Installation**
-1. Clone the repository:
+## How to Run
+1. Clone this repository:
    ```bash
    git clone https://github.com/NissanJK/ProcessScheduler.git
+   ```
+2. Navigate to the project directory:
+   ```bash
    cd ProcessScheduler
    ```
-
-2. Install Python dependencies:
+3. Run the program:
    ```bash
-   pip install matplotlib
+   python main.py
    ```
 
----
+## Usage
+1. Open the application.
+2. Select a scheduling algorithm.
+3. Add processes by providing the arrival time, burst time, and priority (if applicable).
+4. (For Round Robin) Specify the time quantum.
+5. Click "Run Scheduler" to execute the algorithm.
+6. View results including Gantt charts, average waiting time, and turnaround time.
 
-### **Usage**
-Run the program using the following command:
-```bash
-python main.py
+## Screenshots
+### User Interface
+![User Interface](screenshot/Screenshot%202024-12-10%20203426.png)
+### Simulation Input
+![Simulation Input](screenshot/Screenshot%202024-12-10%20203251.png)
+### Simulation Results
+![Simulation Results](screenshot/Screenshot%202024-12-10%20203309.png)
+![Simulation Results](screenshot/Screenshot%202024-12-10%20203251.png)
+
+## Project Structure
+```
+project/
+├── scheduler.py          # Core scheduling algorithms
+├── interface.py          # GUI implementation
+├── utils.py              # Helper functions (e.g., printing results, Gantt chart plotting)
+├── main.py               # Main entry point for the application
+├── README.md             # Project documentation
+├── ProcessScheduler.pdf  # Project report
 ```
 
-Follow the on-screen prompts to:  
-1. Choose a scheduling algorithm.  
-2. Enter process details (arrival time, burst time, priority, etc.).  
-3. View results and Gantt charts.
+## Scheduling Algorithms
+### 1. First Come First Serve (FCFS)
+- Processes are executed in the order of their arrival.
+- Non-preemptive scheduling.
 
----
+### 2. Shortest Job First (SJF)
+- Executes the process with the shortest burst time first.
+- Non-preemptive scheduling.
 
-### **Example**
-**Input**:  
-- Number of Processes: 3  
-- Algorithm: FCFS  
-- Processes:  
-  - P1: Arrival = 0, Burst = 5  
-  - P2: Arrival = 1, Burst = 3  
-  - P3: Arrival = 2, Burst = 8  
+### 3. Round Robin (RR)
+- Each process gets executed for a fixed quantum time in a cyclic order.
+- Preemptive scheduling.
 
-**Output**:  
-```
-Process Arrival Burst Waiting Turnaround
-P1      0       5     0        5
-P2      1       3     4        7
-P3      2       8     6        14
+### 4. Priority Scheduling
+- Executes processes based on priority (lower values indicate higher priority).
+- Non-preemptive scheduling.
 
-Average Waiting Time: 3.33
-Average Turnaround Time: 8.67
-```
-
-A Gantt chart will also be displayed.
+## Future Enhancements
+- Add support for multilevel queue and feedback queue scheduling.
+- Enhance Gantt chart visualization with additional metrics.
+- Create web and mobile versions of the application.
 
 ### **Project Report**
 [ProcessScheduler](/ProcessScheduler.pdf)
