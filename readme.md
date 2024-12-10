@@ -51,7 +51,7 @@ pip install matplotlib
 ### User Interface
 ![User Interface](screenshot/Screenshot%202024-12-10%20203426.png)
 ### Simulation Input
-![Simulation Input](screenshot/Screenshot%202024-12-10%20203251.png)
+![Simulation Input](screenshot/Screenshot%202024-12-10%20203459.png)
 ### Simulation Results
 ![Simulation Results](screenshot/Screenshot%202024-12-10%20203309.png)
 ![Simulation Results](screenshot/Screenshot%202024-12-10%20203251.png)
